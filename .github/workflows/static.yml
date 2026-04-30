@@ -1,43 +1,131 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yoga Coach Assistant</title>
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #d4fc79, #96e6a1);
+}
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px;
+  color: #1b5e20;
+}
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+/* Yoga Cards */
+.card {
+  background: white;
+  width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+  text-align: center;
+  transition: 0.3s;
+}
 
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px 0;
+  color: #2e7d32;
+}
+
+.card p {
+  font-size: 12px;
+  padding: 0 10px 10px;
+  color: #555;
+}
+
+/* Footer text */
+.footer {
+  text-align: center;
+  padding: 10px;
+  color: #1b5e20;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🧘 Yoga Coach Assistant</h1>
+  <p>Explore Yoga, Meditation & Wellness</p>
+</div>
+
+<!-- Yoga Asanas -->
+<div class="container">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3" alt="Tadasana">
+    <h3>Tadasana</h3>
+    <p>Improves posture and balance</p>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5" alt="Vrikshasana">
+    <h3>Vrikshasana</h3>
+    <p>Enhances focus and stability</p>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1552286450-4a669f880062" alt="Bhujangasana">
+    <h3>Bhujangasana</h3>
+    <p>Strengthens spine and relieves stress</p>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597" alt="Meditation">
+    <h3>Meditation</h3>
+    <p>Calms mind and improves focus</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Stay Healthy • Stay Calm • Stay Fit
+</div>
+
+<!-- Watson Chatbot -->
+<script>
+window.watsonAssistantChatOptions = {
+  integrationID: "6b398c2e-280b-43f0-a8cd-b4ad6f10f588",
+  region: "eu-de",
+  serviceInstanceID: "2c90c288-4b73-4e39-8297-ad10bc4253c4",
+  onLoad: async (instance) => { await instance.render(); }
+};
+
+setTimeout(function () {
+  const t = document.createElement('script');
+  t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+    (window.watsonAssistantChatOptions.clientVersion || 'latest') +
+    "/WatsonAssistantChatEntry.js";
+  document.head.appendChild(t);
+});
+</script>
+
+</body>
+</html>
